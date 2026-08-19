@@ -1,0 +1,2111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Serene Steps — Community Rules</title>
+
+<style>
+    :root {
+        --mint: #b9ead7;
+        --mint-dark: #5c9d87;
+        --mint-deep: #397563;
+        --chocolate: #5a3828;
+        --chocolate-light: #8a604b;
+        --cream: #fffaf2;
+        --cream-dark: #f5ead9;
+        --white: #ffffff;
+        --text: #44352d;
+        --muted: #806f65;
+        --danger: #b85c5c;
+        --shadow: 0 10px 30px rgba(74, 54, 43, 0.12);
+        --radius: 20px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+        background:
+            radial-gradient(circle at top left, rgba(185,234,215,.55), transparent 30%),
+            radial-gradient(circle at bottom right, rgba(138,96,75,.12), transparent 30%),
+            var(--cream);
+        color: var(--text);
+        line-height: 1.7;
+    }
+
+    /* HEADER */
+
+    header {
+        text-align: center;
+        padding: 70px 20px 55px;
+        background:
+            linear-gradient(135deg, rgba(185,234,215,.92), rgba(255,250,242,.95)),
+            var(--mint);
+        border-bottom: 4px solid rgba(92,157,135,.25);
+        position: relative;
+        overflow: hidden;
+    }
+
+    header::before,
+    header::after {
+        content: "✦";
+        position: absolute;
+        font-size: 80px;
+        opacity: .12;
+        color: var(--chocolate);
+    }
+
+    header::before {
+        left: 7%;
+        top: 15px;
+    }
+
+    header::after {
+        right: 7%;
+        bottom: 10px;
+    }
+
+    .logo {
+        font-size: 4rem;
+        margin-bottom: 5px;
+    }
+
+    header h1 {
+        margin: 0;
+        color: var(--chocolate);
+        font-size: clamp(2.3rem, 6vw, 4rem);
+        letter-spacing: -1px;
+    }
+
+    header p {
+        max-width: 700px;
+        margin: 15px auto 0;
+        color: var(--mint-deep);
+        font-size: 1.15rem;
+    }
+
+    .invite {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 13px 24px;
+        border-radius: 999px;
+        background: var(--chocolate);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: var(--shadow);
+        transition: .2s;
+    }
+
+    .invite:hover {
+        transform: translateY(-2px);
+        background: var(--chocolate-light);
+    }
+
+    /* NAVIGATION */
+
+    .tabs-wrapper {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255,250,242,.94);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(90,56,40,.1);
+    }
+
+    .tabs {
+        max-width: 1150px;
+        margin: auto;
+        padding: 12px 15px;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        scrollbar-width: thin;
+    }
+
+    .tab {
+        border: none;
+        background: var(--cream-dark);
+        color: var(--chocolate);
+        padding: 11px 18px;
+        border-radius: 999px;
+        font-weight: bold;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: .2s;
+        font-size: .95rem;
+    }
+
+    .tab:hover {
+        background: var(--mint);
+    }
+
+    .tab.active {
+        background: var(--mint-dark);
+        color: white;
+        box-shadow: 0 5px 15px rgba(92,157,135,.25);
+    }
+
+    /* CONTENT */
+
+    main {
+        max-width: 1050px;
+        margin: 45px auto;
+        padding: 0 20px;
+    }
+
+    .page {
+        display: none;
+        animation: fadeIn .3s ease;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .intro {
+        background: white;
+        padding: 28px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 25px;
+        border-left: 6px solid var(--mint-dark);
+    }
+
+    .intro h2 {
+        margin-top: 0;
+        color: var(--chocolate);
+    }
+
+    /* RULE CARDS */
+
+    .rule {
+        background: white;
+        border-radius: var(--radius);
+        margin: 18px 0;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        border: 1px solid rgba(90,56,40,.06);
+    }
+
+    .rule-header {
+        padding: 22px 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: linear-gradient(90deg, rgba(185,234,215,.42), rgba(255,255,255,.8));
+    }
+
+    .number {
+        min-width: 43px;
+        height: 43px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--chocolate);
+        color: white;
+        font-weight: bold;
+    }
+
+    .rule-header h3 {
+        margin: 0;
+        color: var(--chocolate);
+        font-size: 1.2rem;
+    }
+
+    .rule-body {
+        padding: 24px 27px 28px;
+    }
+
+    .rule-body h4 {
+        margin-bottom: 6px;
+        color: var(--mint-deep);
+        font-size: 1rem;
+    }
+
+    .rule-body p {
+        margin-top: 5px;
+    }
+
+    ul {
+        padding-left: 23px;
+    }
+
+    li {
+        margin: 5px 0;
+    }
+
+    /* GOOD / BAD */
+
+    .example {
+        margin: 18px 0;
+        padding: 17px 20px;
+        border-radius: 14px;
+    }
+
+    .good {
+        background: #edf9f3;
+        border-left: 5px solid var(--mint-dark);
+    }
+
+    .bad {
+        background: #fff0ee;
+        border-left: 5px solid var(--danger);
+    }
+
+    .example strong {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    /* CONSEQUENCES */
+
+    .consequence {
+        background: #fff8e8;
+        border-left: 5px solid #d1a14a;
+        padding: 18px 20px;
+        border-radius: 14px;
+        margin-top: 20px;
+    }
+
+    .consequence strong {
+        color: #85631e;
+    }
+
+    /* STAFF SYSTEM */
+
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 14px;
+        margin: 25px 0;
+    }
+
+    .step {
+        background: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        border-top: 5px solid var(--mint-dark);
+    }
+
+    .step .emoji {
+        font-size: 2rem;
+    }
+
+    .step h3 {
+        color: var(--chocolate);
+        margin: 7px 0;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+        margin-bottom: 25px;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid var(--cream-dark);
+        border-radius: 999px;
+        background: white;
+        color: var(--text);
+        font-size: 1rem;
+        outline: none;
+    }
+
+    .search-box input:focus {
+        border-color: var(--mint-dark);
+    }
+
+    /* FOOTER */
+
+    footer {
+        text-align: center;
+        padding: 45px 20px;
+        background: var(--chocolate);
+        color: var(--cream);
+        margin-top: 70px;
+    }
+
+    footer strong {
+        color: var(--mint);
+    }
+
+    footer a {
+        color: var(--mint);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 650px) {
+        header {
+            padding: 50px 18px 40px;
+        }
+
+        .logo {
+            font-size: 3rem;
+        }
+
+        main {
+            padding: 0 12px;
+            margin-top: 30px;
+        }
+
+        .rule-header {
+            padding: 18px;
+        }
+
+        .rule-body {
+            padding: 20px;
+        }
+
+        .intro {
+            padding: 22px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🍫🌿</div>
+
+    <h1>Serene Steps</h1>
+
+    <p>
+        A sweet little chocomint corner where everyone can
+        chat, create, play, relax, and feel welcome. ♡
+    </p>
+
+    <a class="invite" href="https://discord.gg/FhYCPqbeeg" target="_blank">
+        🍵 Join Serene Steps
+    </a>
+</header>
+
+
+<div class="tabs-wrapper">
+    <nav class="tabs">
+
+        <button class="tab active" onclick="showPage('basic', this)">
+            🍫 Basic Rules
+        </button>
+
+        <button class="tab" onclick="showPage('detailed', this)">
+            🌿 Detailed Rules
+        </button>
+
+        <button class="tab" onclick="showPage('mental', this)">
+            💭 Mental Health
+        </button>
+
+        <button class="tab" onclick="showPage('staff', this)">
+            🛡️ Staff & Reports
+        </button>
+
+        <button class="tab" onclick="showPage('enforcement', this)">
+            ⚖️ Enforcement
+        </button>
+
+    </nav>
+</div>
+
+
+<main>
+
+<!-- ========================================================= -->
+<!-- BASIC RULES -->
+<!-- ========================================================= -->
+
+<section id="basic" class="page active">
+
+    <div class="intro">
+        <h2>🍫 The Basic Rules</h2>
+
+        <p>
+            These are the rules everyone in Serene Steps is
+            expected to understand and follow.
+        </p>
+
+        <p>
+            They're intentionally simple here. If you want
+            examples and detailed explanations, check the
+            <strong>Detailed Rules</strong> tab.
+        </p>
+    </div>
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">01</div>
+            <h3>🍫 Be Kind & Sweet</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Treat other members with kindness and respect.
+                Discrimination, hate speech, racism, harassment,
+                and targeted cruelty are not allowed.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">02</div>
+            <h3>🌿 Keep It Cozy</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Avoid unnecessary drama, public call-outs,
+                baiting, and passive-aggressive behaviour.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">03</div>
+            <h3>🍵 Keep It PG-13</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                NSFW, sexually explicit, pornographic,
+                excessively graphic, or otherwise inappropriate
+                content is prohibited.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">04</div>
+            <h3>💬 No Spamming</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Don't flood channels with messages, repeated
+                content, excessive caps, emoji spam, or
+                unnecessary tags.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">05</div>
+            <h3>📚 Stay On Topic</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Use the correct channel for your conversation.
+                Venting belongs in vent spaces, bot commands
+                belong in bot channels, and so on.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">06</div>
+            <h3>🫶 Respect Boundaries & DMs</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Ask before moving conversations into DMs and
+                respect members who don't want private messages.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">07</div>
+            <h3>🚫 No Advertising</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Self-promotion, server invites, advertising,
+                and selling products without permission are
+                not allowed.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">08</div>
+            <h3>🛡️ Listen to Staff</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Follow reasonable instructions from moderators
+                and administrators.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">09</div>
+            <h3>🎀 Keep Profiles Cute & Clean</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Avatars, usernames, nicknames, bios, and statuses
+                must remain appropriate.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">10</div>
+            <h3>🌪️ No Disruptions</h3>
+        </div>
+
+        <div class="rule-body">
+            <p>
+                Trolling, raiding, coordinated spam, mass
+                disruption, and attempts to damage the server
+                may result in an immediate ban.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- DETAILED RULES -->
+<!-- ========================================================= -->
+
+<section id="detailed" class="page">
+
+    <div class="intro">
+        <h2>🌿 Detailed Rules</h2>
+
+        <p>
+            This section explains what each rule actually means,
+            gives examples of good and bad behaviour, and explains
+            what may happen when a rule is broken.
+        </p>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="ruleSearch"
+                placeholder="🔎 Search the detailed rules..."
+                onkeyup="searchRules()"
+            >
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">01</div>
+            <h3>🍫 Be Kind & Sweet</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                You don't have to like everyone or agree with
+                everyone. You do need to communicate without
+                attacking or degrading other people.
+            </p>
+
+            <p>
+                Harassment can include repeated insults,
+                deliberately targeting someone, encouraging
+                others to gang up on someone, or continuing
+                behaviour after someone has asked you to stop.
+            </p>
+
+            <h4>What to do</h4>
+
+            <ul>
+                <li>Disagree with ideas without attacking people.</li>
+                <li>Give people space when they ask for it.</li>
+                <li>Report serious problems to staff.</li>
+                <li>Keep jokes from becoming personal attacks.</li>
+            </ul>
+
+            <h4>What not to do</h4>
+
+            <ul>
+                <li>Use slurs or hateful insults.</li>
+                <li>Make discriminatory jokes.</li>
+                <li>Encourage people to gang up on someone.</li>
+                <li>Repeatedly insult someone and call it a joke.</li>
+                <li>Continue bothering someone after they say stop.</li>
+            </ul>
+
+            <div class="example good">
+                <strong>🌿 Good example</strong>
+                "I don't really agree with your opinion, but I
+                understand where you're coming from."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "You're stupid for believing that."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Minor incidents may result in a reminder,
+                    message removal, or warning. Repeated
+                    harassment or serious hateful behaviour may
+                    result in a mute, kick, or ban. Severe
+                    violations may skip the normal progression.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">02</div>
+            <h3>🌿 Keep It Cozy</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Arguments happen. Turning an argument into a
+                public spectacle is different.
+            </p>
+
+            <p>
+                Public call-outs, vague posts aimed at specific
+                members, baiting, and trying to make other people
+                pick sides can quickly make the server uncomfortable.
+            </p>
+
+            <h4>What not to do</h4>
+
+            <ul>
+                <li>Start public arguments for attention.</li>
+                <li>Make posts clearly aimed at another member.</li>
+                <li>Encourage people to pick sides.</li>
+                <li>Bring old conflicts into unrelated conversations.</li>
+                <li>Follow someone around the server to argue.</li>
+            </ul>
+
+            <div class="example good">
+                <strong>🌿 Better</strong>
+                "I think there was a misunderstanding. I'm going
+                to step away for now and ask staff if we need help."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "@everyone LOOK AT WHAT [member] DID."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Staff may ask you to stop, remove messages,
+                    issue a warning, or use stronger moderation
+                    if the behaviour continues.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">03</div>
+            <h3>🍵 Keep Serene Steps PG-13</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Serene Steps is intended to be a general-audience
+                community. Content should remain appropriate for
+                a PG-13 environment.
+            </p>
+
+            <p>
+                This applies to messages, images, videos, links,
+                embeds, profiles, usernames, and statuses.
+            </p>
+
+            <h4>Not allowed</h4>
+
+            <ul>
+                <li>Sexually explicit or pornographic content.</li>
+                <li>Graphic injury or violence imagery.</li>
+                <li>Sexualised content involving minors.</li>
+                <li>Attempts to bypass the rule with spoilers or links.</li>
+            </ul>
+
+            <div class="example good">
+                <strong>🌿 Okay</strong>
+                "That horror movie was really creepy!"
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                Posting explicit material and claiming it is
+                allowed because it was hidden behind a spoiler.
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Inappropriate content may be removed immediately.
+                    Depending on severity, staff may warn, mute,
+                    kick, or ban.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">04</div>
+            <h3>💬 No Spamming</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Don't flood a channel with rapid messages,
+                repeated content, excessive caps, emoji spam,
+                or unnecessary tags.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Okay</strong>
+                "GUESS WHAT!! I finally finished my drawing!"
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "HI HI HI HI HI HI HI" followed by repeated
+                unnecessary mentions.
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Staff may ask you to slow down, remove spam,
+                    or issue a warning. Deliberate or repeated
+                    spam may lead to a mute or stronger action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">05</div>
+            <h3>📚 Stay On Topic</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Channels exist for specific purposes. Please
+                use the appropriate channel for your message.
+            </p>
+
+            <ul>
+                <li>Vent content → designated vent channels.</li>
+                <li>Bot commands → bot channels.</li>
+                <li>Art → art channels.</li>
+                <li>Media → media channels.</li>
+            </ul>
+
+            <div class="example good">
+                <strong>🌿 Better</strong>
+                "I'll move this conversation to #general so
+                we don't fill the art channel with unrelated chat."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                Deliberately starting an unrelated argument in
+                a channel after being asked to move.
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Usually you'll simply be redirected to the
+                    correct channel. Repeated refusal can lead
+                    to a warning or further action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">06</div>
+            <h3>🫶 Respect Boundaries & DMs</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Being friendly does not automatically mean someone
+                wants private messages. Ask before moving a
+                conversation into DMs when appropriate.
+            </p>
+
+            <p>
+                If someone says their DMs are closed, asks you
+                not to message them, or stops responding, respect
+                their space.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                "Would you be okay with me DMing you about this?"
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "Please don't DM me."
+                <br><br>
+                "I'm going to DM you anyway."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Depending on severity, staff may warn, mute,
+                    kick, or ban. Repeatedly contacting someone
+                    through alternate accounts after they have
+                    asked you to stop can result in stronger action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">07</div>
+            <h3>🚫 No Advertising</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Don't use Serene Steps to recruit members,
+                advertise other servers, promote products,
+                or send unsolicited promotional messages.
+            </p>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "Everyone join my server! discord.gg/..."
+            </div>
+
+            <div class="example good">
+                <strong>🌿 Better</strong>
+                Ask staff whether there is an approved place
+                or system for sharing a project.
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Advertisements may be removed. Depending on
+                    intent and repetition, staff may warn, mute,
+                    kick, or ban.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">08</div>
+            <h3>🛡️ Listen to Staff</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Staff are responsible for keeping the server safe,
+                organised, and welcoming. If staff ask you to
+                stop, move a conversation, or remove something,
+                please cooperate.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                Staff: "Please move this discussion to #media."
+                <br>
+                Member: "Sure, sorry about that!"
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                Staff: "Please stop the argument."
+                <br>
+                Member: "No. You can't tell me what to do."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Refusing reasonable staff instructions can
+                    result in a warning, mute, kick, or ban
+                    depending on the circumstances.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">09</div>
+            <h3>🎀 Keep Profiles Cute & Clean</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Avatars, nicknames, usernames, bios, and statuses
+                are all part of your presence in the server.
+                They must remain appropriate.
+            </p>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                Changing your nickname to hateful or offensive
+                material after being asked to change it.
+            </div>
+
+            <div class="example good">
+                <strong>🌿 Better</strong>
+                Choose a cute nickname that fits the chocomint
+                atmosphere! 🍫🌿
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Staff may ask you to change the offending
+                    profile element. Refusal may lead to
+                    moderation action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule searchable">
+        <div class="rule-header">
+            <div class="number">10</div>
+            <h3>🌪️ No Disruptions, Raiding, or Trolling</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <h4>What this means</h4>
+
+            <p>
+                Do not deliberately attempt to make the server
+                unusable or encourage other people to disrupt it.
+            </p>
+
+            <ul>
+                <li>No raids.</li>
+                <li>No coordinated spam.</li>
+                <li>No mass-pinging.</li>
+                <li>No deliberate channel disruption.</li>
+                <li>No attempts to damage server systems.</li>
+            </ul>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "Everyone join Serene Steps and spam every channel!"
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Raiding, malicious disruption, or coordinated
+                    attacks may result in an immediate and permanent
+                    ban.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- MENTAL HEALTH -->
+<!-- ========================================================= -->
+
+<section id="mental" class="page">
+
+    <div class="intro">
+        <h2>💭 Mental Health & Support</h2>
+
+        <p>
+            Serene Steps has vent and support spaces because we
+            want members to have somewhere they can talk about
+            difficult feelings.
+        </p>
+
+        <p>
+            These spaces have additional rules so that people
+            can share difficult experiences without exposing
+            others to unnecessarily graphic, harmful, or
+            overwhelming content.
+        </p>
+
+        <p>
+            <strong>Remember:</strong> You are never required to
+            respond to a vent, and you are allowed to take a
+            break from support channels.
+        </p>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">11</div>
+            <h3>💭 Peer Support, Not Professional Help</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Serene Steps is a peer community. Members can
+                listen and support one another, but the server
+                cannot provide therapy, diagnosis, medical
+                treatment, or professional crisis intervention.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                "I'm sorry you're going through this. I can't
+                diagnose what's happening, but I hope you can
+                talk to someone you trust."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "You definitely have a disorder. You don't need
+                a professional because I know exactly what you have."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Unsafe or misleading advice may be removed.
+                    Repeatedly presenting yourself as a professional
+                    or giving dangerous advice may result in
+                    moderation action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">12</div>
+            <h3>⚠️ Trigger Warnings & Spoilers</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Sensitive topics should be labelled clearly and
+                potentially triggering details should be hidden
+                behind Discord spoiler formatting where appropriate.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                "TW: discussion of self-harm"
+                <br><br>
+                ||I have been struggling with urges and it's
+                been difficult emotionally.||
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                Posting upsetting details first and putting
+                "TW" at the very end.
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Staff may ask you to edit or remove the
+                    message. Repeated problems may result in
+                    a warning or stronger moderation.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">13</div>
+            <h3>🕊️ No Graphic Descriptions</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                You may talk about difficult experiences, but do
+                not provide detailed or graphic descriptions of
+                self-harm, eating disorders, violence, injuries,
+                or other disturbing material.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                "I've been having a really difficult day and
+                could use some kindness."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                Posting detailed descriptions of injuries or
+                instructions about harmful behaviour.
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Graphic or instructional content may be
+                    removed immediately. Serious violations may
+                    result in stronger moderation.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">14</div>
+            <h3>🌱 No Glorification or Encouragement of Harm</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Talking honestly about struggling is different
+                from encouraging or romanticising harmful behaviour.
+            </p>
+
+            <p>
+                Do not turn suffering into a competition or
+                make someone feel like they need to prove how
+                badly they are struggling.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                "You don't have to prove how bad things are to
+                deserve support."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "You should keep doing it; it makes you stronger."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Encouragement or glorification may result in
+                    immediate message removal and moderation.
+                    Serious or repeated behaviour may result in
+                    a mute, kick, or ban.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">15</div>
+            <h3>🫶 Respect Vent Preferences</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                If someone says "no advice," listen instead of
+                giving advice. If they say "no replies," give
+                them space.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                Member: "Vent — no advice please."
+                <br>
+                Response: "That sounds really hard. I'm here
+                to listen. 🫶"
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "You NEED to do this. Here's a list of everything
+                you should be doing."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Staff may ask you to stop or remove replies.
+                    Repeatedly ignoring vent preferences may
+                    result in a warning or other action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">16</div>
+            <h3>🍵 Keep Heavy Vents in Vent Channels</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Deeply sensitive or triggering content belongs
+                in designated vent/support spaces rather than
+                general chat.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Better</strong>
+                "I'll put this in the vent channel so people can
+                choose whether they're in the headspace to read it."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                Posting a highly sensitive vent in general chat
+                without using the designated support space.
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Staff will normally redirect the conversation.
+                    Repeatedly ignoring channel boundaries may
+                    result in a warning.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">17</div>
+            <h3>🛡️ Crisis & Emergency Safety</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Serene Steps is not equipped to manage emergencies
+                or provide crisis intervention.
+            </p>
+
+            <p>
+                Members may talk about struggling within the
+                support rules, but the server cannot safely become
+                someone's emergency response system.
+            </p>
+
+            <h4>Do not</h4>
+
+            <ul>
+                <li>Ask members to become your only source of emergency help.</li>
+                <li>Promise another member that you can keep them safe.</li>
+                <li>Act as a crisis professional if you are not one.</li>
+                <li>Encourage someone to hide an emergency from trusted people.</li>
+                <li>Post instructions for harmful behaviour.</li>
+            </ul>
+
+            <h4>Do</h4>
+
+            <ul>
+                <li>Tell a trusted person in real life when you need help.</li>
+                <li>Use appropriate professional or emergency support when necessary.</li>
+                <li>Tell staff if you are seriously concerned about a member.</li>
+                <li>Step away if a situation becomes overwhelming.</li>
+            </ul>
+
+            <div class="example good">
+                <strong>🌿 Better</strong>
+                "I'm having a really difficult time. I'm going
+                to tell someone I trust because I don't think
+                I should handle this alone."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "Nobody else needs to know. You have to stay
+                online with me and keep me safe."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Staff may remove unsafe content, intervene,
+                    and direct the situation toward appropriate
+                    real-world support.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">18</div>
+            <h3>💚 No Guilt-Tripping</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Nobody owes another member a reply, emotional
+                labour, or constant availability.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                "That's okay! Take care of yourself. 🫶"
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "Wow. I guess you don't care about me because
+                you won't reply."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Staff may intervene and ask the behaviour
+                    to stop. Repeated or serious guilt-tripping
+                    may result in moderation action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">19</div>
+            <h3>🔒 Protect Member Privacy</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Do not share another member's private information,
+                DMs, vents, personal experiences, or identifying
+                information without permission.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                Keep private conversations private unless there
+                is a legitimate moderation or safety reason for
+                staff to see them.
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                Taking a private conversation and posting it
+                elsewhere to embarrass someone.
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Privacy violations can result in serious
+                    moderation action, including a ban depending
+                    on severity.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">20</div>
+            <h3>🌱 Know Your Limits</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                You are never required to read or respond to
+                vent content.
+            </p>
+
+            <p>
+                If vent channels negatively affect you, you may
+                mute them or remove the Vent Access role through
+                <strong>&lt;#channel-roles&gt;</strong> if that
+                option is available.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Good</strong>
+                "I think I need a break from vents for a while,
+                so I'm going to mute the channel."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "You can't leave the vent channel because we
+                need you to listen."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Members who pressure or shame others for
+                    setting boundaries may receive moderation.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- STAFF -->
+<!-- ========================================================= -->
+
+<section id="staff" class="page">
+
+    <div class="intro">
+        <h2>🛡️ Staff & Reports</h2>
+
+        <p>
+            Staff are here to help keep Serene Steps welcoming,
+            organised, and safe. If something goes wrong, please
+            report it rather than trying to handle it yourself.
+        </p>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">21</div>
+            <h3>⚖️ How Moderation Works</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <div class="steps">
+
+                <div class="step">
+                    <div class="emoji">🍃</div>
+                    <h3>Reminder</h3>
+                    <p>
+                        Staff explain the rule and ask you
+                        to stop or change something.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="emoji">🍵</div>
+                    <h3>Warning</h3>
+                    <p>
+                        A formal warning may be recorded
+                        for a violation.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="emoji">🌿</div>
+                    <h3>Mute</h3>
+                    <p>
+                        Your ability to communicate may
+                        temporarily be restricted.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="emoji">🍫</div>
+                    <h3>Kick</h3>
+                    <p>
+                        You may be removed from the server.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="emoji">🚫</div>
+                    <h3>Ban</h3>
+                    <p>
+                        You may be permanently removed.
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                This is a general guideline rather than a promise
+                that every case will follow every step.
+            </p>
+
+            <p>
+                Severe behaviour can skip directly to stronger
+                action.
+            </p>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">22</div>
+            <h3>📩 How to Report Something</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                If a rule is broken or you feel unsafe, report
+                the situation to staff privately.
+            </p>
+
+            <h4>Useful information</h4>
+
+            <ul>
+                <li>Who was involved.</li>
+                <li>What happened.</li>
+                <li>Where it happened.</li>
+                <li>When it happened.</li>
+                <li>Screenshots or message links when appropriate.</li>
+            </ul>
+
+            <div class="example good">
+                <strong>🌿 Good report</strong>
+                "Hi, I'd like to report something that happened
+                in #general. I have screenshots if they're needed."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "EVERYONE REPORT THIS PERSON RIGHT NOW!"
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">23</div>
+            <h3>🛑 Please Don't Mini-Mod</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Members can point someone toward the rules kindly,
+                but members should not act as unofficial staff.
+            </p>
+
+            <div class="example good">
+                <strong>🌿 Better</strong>
+                "I think this might be against the rules.
+                I'll let staff know."
+            </div>
+
+            <div class="example bad">
+                <strong>🚫 Not okay</strong>
+                "I'm basically staff, so you're banned."
+            </div>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Repeated mini-modding may result in a warning
+                    or other moderation, especially if it becomes
+                    harassment or disruption.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">24</div>
+            <h3>🍃 Staff Decisions & Appeals</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                You may disagree with a moderation decision, but
+                please discuss disagreements privately and calmly.
+            </p>
+
+            <h4>Do</h4>
+
+            <ul>
+                <li>Ask privately for clarification.</li>
+                <li>Use an appeal system if one exists.</li>
+                <li>Explain your side respectfully.</li>
+            </ul>
+
+            <h4>Don't</h4>
+
+            <ul>
+                <li>Start a public argument.</li>
+                <li>Rally members against staff.</li>
+                <li>Threaten staff.</li>
+                <li>Spam staff demanding an immediate response.</li>
+            </ul>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Public disruption, harassment, or refusal to
+                    follow reasonable staff instructions may lead
+                    to moderation action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="rule">
+        <div class="rule-header">
+            <div class="number">25</div>
+            <h3>🎟️ Tickets & Confidential Reports</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Use tickets or private staff messages for sensitive
+                reports instead of posting personal information
+                publicly.
+            </p>
+
+            <h4>Do</h4>
+
+            <ul>
+                <li>Explain what happened clearly.</li>
+                <li>Provide relevant evidence.</li>
+                <li>Tell staff if you're concerned about privacy.</li>
+                <li>Be patient while staff investigate.</li>
+            </ul>
+
+            <h4>Don't</h4>
+
+            <ul>
+                <li>Fabricate evidence.</li>
+                <li>Make deliberately false reports.</li>
+                <li>Spam multiple staff members with the same report.</li>
+                <li>Use reports to harass another member.</li>
+            </ul>
+
+            <div class="consequence">
+                <strong>⚠️ What happens if you disobey?</strong>
+                <p>
+                    Deliberately false reports, fabricated evidence,
+                    or misuse of the ticket system may result in
+                    moderation action.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- ENFORCEMENT -->
+<!-- ========================================================= -->
+
+<section id="enforcement" class="page">
+
+    <div class="intro">
+        <h2>⚖️ Enforcement & Consequences</h2>
+
+        <p>
+            We want moderation to be fair and understandable.
+            Not every mistake deserves the same response.
+        </p>
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-header">
+            <div class="number">1</div>
+            <h3>🍃 Reminders</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                For minor mistakes or misunderstandings, staff
+                may simply explain the rule and ask you to stop.
+            </p>
+
+            <p>
+                A reminder is not necessarily a formal warning.
+                It is often simply a chance to correct the behaviour.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-header">
+            <div class="number">2</div>
+            <h3>🍵 Warnings</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                A formal warning may be given when a rule is
+                clearly broken, repeated, or ignored after a
+                reminder.
+            </p>
+
+            <p>
+                Warnings help staff keep track of repeated
+                behaviour and determine when stronger action
+                may be necessary.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-header">
+            <div class="number">3</div>
+            <h3>🌿 Mutes</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                A mute temporarily prevents a member from
+                communicating in some or all server channels.
+            </p>
+
+            <p>
+                Mutes may be used when someone needs time to
+                cool down, when behaviour continues after
+                warnings, or when immediate disruption needs
+                to stop.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-header">
+            <div class="number">4</div>
+            <h3>🍫 Kicks</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                A kick removes a member from the server.
+                Depending on the circumstances, they may be
+                allowed to return.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-header">
+            <div class="number">5</div>
+            <h3>🚫 Bans</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                A ban permanently removes someone from the
+                community unless staff decide otherwise.
+            </p>
+
+            <p>
+                Serious harassment, raids, severe hateful
+                behaviour, deliberate disruption, serious privacy
+                violations, or other major violations may result
+                in an immediate ban.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="rule">
+
+        <div class="rule-header">
+            <div class="number">!</div>
+            <h3>🌱 Remember: Mistakes Happen</h3>
+        </div>
+
+        <div class="rule-body">
+
+            <p>
+                Nobody expects members to be perfect.
+            </p>
+
+            <p>
+                If you make a genuine mistake:
+            </p>
+
+            <ol>
+                <li>Listen when someone corrects you.</li>
+                <li>Stop the behaviour.</li>
+                <li>Apologise when appropriate.</li>
+                <li>Learn from it.</li>
+                <li>Move forward.</li>
+            </ol>
+
+            <p>
+                At the same time, serious or repeated behaviour
+                can still have consequences.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="intro">
+
+        <h2>🍫🌿 Thank You!</h2>
+
+        <p>
+            Our rules exist to help Serene Steps remain a place
+            where people can chat, play games, share art, enjoy
+            media, make friends, and find support within safe
+            boundaries.
+        </p>
+
+        <p>
+            Thank you for helping us keep our little chocomint
+            corner sweet, gentle, and welcoming. ♡
+        </p>
+
+        <p>
+            Grab a little treat, get comfy, and enjoy your stay!
+            🍫🌿
+        </p>
+
+        <a class="invite"
+           href="https://discord.gg/FhYCPqbeeg"
+           target="_blank">
+            🍵 Join Serene Steps
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+    <strong>🍫🌿 Serene Steps</strong>
+    <p>
+        A sweet little chocomint corner for everyone. ♡
+    </p>
+
+    <a href="https://discord.gg/FhYCPqbeeg" target="_blank">
+        discord.gg/FhYCPqbeeg
+    </a>
+</footer>
+
+
+<script>
+
+function showPage(pageId, button) {
+
+    const pages = document.querySelectorAll(".page");
+    const tabs = document.querySelectorAll(".tab");
+
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    tabs.forEach(tab => {
+        tab.classList.remove("active");
+    });
+
+    document.getElementById(pageId).classList.add("active");
+    button.classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function searchRules() {
+
+    const search =
+        document.getElementById("ruleSearch")
+        .value
+        .toLowerCase();
+
+    const rules =
+        document.querySelectorAll(".searchable");
+
+    rules.forEach(rule => {
+
+        const text =
+            rule.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+            rule.style.display = "";
+        } else {
+            rule.style.display = "none";
+        }
+
+    });
+}
+
+</script>
+
+</body>
+</html>
+```
